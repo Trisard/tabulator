@@ -1,0 +1,2 @@
+export default function (cell: any, onRendered: (callback: () => void) => void, success: (value: any) => void, cancel: () => void, editorParams: any): HTMLElement;
+//# sourceMappingURL=progress.d.ts.map

@@ -1,0 +1,2 @@
+export default function (this: any, cell: any, onRendered: (callback: () => void) => void, success: (value: any) => void, cancel: () => void, editorParams: any): HTMLElement;
+//# sourceMappingURL=list.d.ts.map

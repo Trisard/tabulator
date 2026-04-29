@@ -1,0 +1,46 @@
+import Renderer from '../Renderer.js';
+export default class VirtualDomHorizontal extends Renderer {
+    leftCol: number;
+    rightCol: number;
+    scrollLeft: number;
+    vDomScrollPosLeft: number;
+    vDomScrollPosRight: number;
+    vDomPadLeft: number;
+    vDomPadRight: number;
+    fitDataColAvg: number;
+    windowBuffer: number;
+    visibleRowsCache: any[] | null;
+    initialized: boolean;
+    isFitData: boolean;
+    columns: any[];
+    constructor(table: any);
+    initialize(): void;
+    compatibilityCheck(): void;
+    layoutCheck(): void;
+    vertScrollListen(): void;
+    clearVisRowCache(): void;
+    renderColumns(row?: any, force?: boolean): void;
+    scrollColumns(left: number, dir: boolean): void;
+    calcWindowBuffer(): void;
+    rerenderColumns(update?: boolean, blockRedraw?: boolean): void;
+    renderRowCells(row: any): void;
+    rerenderRowCells(row: any, force?: boolean): void;
+    reinitializeColumnWidths(columns: any[]): void;
+    deinitialize(): void;
+    clear(): void;
+    dataChange(): void;
+    reinitChanged(old: any): boolean;
+    reinitializeRows(): void;
+    getVisibleRows(): any[];
+    scroll(diff: number): void;
+    colPositionAdjust(start: number, end: number, diff: number): void;
+    addColRight(): void;
+    addColLeft(): void;
+    removeColRight(): void;
+    removeColLeft(): void;
+    fitDataColActualWidthCheck(column: any): number;
+    initializeRow(row: any): void;
+    appendCell(row: any, column: any): void;
+    reinitializeRow(row: any, force?: boolean): void;
+}
+//# sourceMappingURL=VirtualDomHorizontal.d.ts.map

@@ -1,0 +1,44 @@
+import CoreFeature from '../../core/CoreFeature.js';
+import GridCalculator from "./GridCalculator.js";
+import SheetComponent from "./SheetComponent.js";
+export default class Sheet extends CoreFeature {
+    spreadsheetManager: any;
+    definition: any;
+    title: string;
+    key: string;
+    rowCount: number;
+    columnCount: number;
+    data: any[];
+    element: HTMLElement | null;
+    isActive: boolean;
+    grid: GridCalculator;
+    defaultColumnDefinition: any;
+    columnDefinition: any;
+    columnDefs: any[];
+    rowDefs: any[];
+    columnFields: any[];
+    columns: any[];
+    rows: any[];
+    scrollTop: number | null;
+    scrollLeft: number | null;
+    constructor(spreadsheetManager: any, definition: any);
+    initialize(): void;
+    reinitialize(): void;
+    initializeElement(): void;
+    initializeColumns(): void;
+    initializeRows(): void;
+    unload(): void;
+    load(): void;
+    getComponent(): SheetComponent;
+    getDefinition(): any;
+    getData(full?: boolean): any[];
+    setData(data: any[]): void;
+    clear(): void;
+    setTitle(title: string): void;
+    setRows(rows: number): void;
+    setColumns(columns: number): void;
+    remove(): void;
+    destroy(): void;
+    active(): void;
+}
+//# sourceMappingURL=Sheet.d.ts.map

@@ -9,6 +9,7 @@ import {globbySync} from 'globby';
 import fs from 'fs-extra';
 
 import postcss from "rollup-plugin-postcss";
+import typescript from "@rollup/plugin-typescript";
 
 export default class Bundler{
 	
@@ -40,9 +41,11 @@ export default class Bundler{
 		const ignoredCircularFiles = [
 			"Column.js",
 			"Tabulator.js",
+			"Column.ts",
+			"Tabulator.ts",
 		];
 
-		return ignoredCircularFiles.some(file => warn.importer.includes(file));
+		return warn.importer ? ignoredCircularFiles.some(file => warn.importer.includes(file)) : false;
 	}
 	
 	bundle(){
@@ -142,10 +145,22 @@ export default class Bundler{
 	
 	bundleESM(minify){
 		this.bundles.push({
-			input:"src/js/builds/esm.js",
+			input:"src/js/builds/esm.ts",
 			plugins: [
-				nodeResolve(),
-				minify ? terser() : null,
+				typescript({
+					tsconfig: './tsconfig.json',
+					compilerOptions: {
+						declaration: !minify,
+						declarationMap: !minify,
+						emitDeclarationOnly: false,
+						outDir: './dist/js',
+						...(minify ? {} : {declarationDir: './dist/js/types'}),
+						sourceMap: true
+					}
+				}),
+
+				nodeResolve({ extensions: ['.ts', '.js'] }),
+				...(minify ? [terser()] : []),
 				license({
 					banner: {
 						commentStyle:"none",
@@ -173,10 +188,21 @@ export default class Bundler{
 	
 	bundleUMD(minify){
 		this.bundles.push({
-			input:"src/js/builds/usd.js",
+			input:"src/js/builds/usd.ts",
 			plugins: [
-				nodeResolve(),
-				minify ? terser() : null,
+				typescript({
+					tsconfig: './tsconfig.json',
+					compilerOptions: {
+						declaration: false,
+						declarationMap: false,
+						emitDeclarationOnly: false,
+						outDir: './dist/js',
+						sourceMap: true
+					}
+				}),
+
+				nodeResolve({ extensions: ['.ts', '.js'] }),
+				...(minify ? [terser()] : []),
 				license({
 					banner: {
 						commentStyle:"none",

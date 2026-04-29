@@ -5,11 +5,15 @@
   "style": "dist/css/tabulator.css",
   "main": "dist/js/tabulator.js",
   "module": "dist/js/tabulator_esm.mjs",
+  "types": "dist/js/types/builds/esm.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/js/types/builds/esm.d.ts",
+
       "require": "./dist/js/tabulator.js",
       "import": "./dist/js/tabulator_esm.mjs"
     },
+
     "./dist/css/*.css": "./dist/css/*.css",
     "./dist/js/*.js": "./dist/js/*.js",
     "./src/scss/*.scss": "./src/scss/*.scss",
@@ -30,7 +34,8 @@
     "dev:wrappers": "rollup -c build/rollup.mjs -w --environment TARGET:wrappers ",
     "test:unit": "jest",
     "test:e2e": "npm run build && npx playwright test",
-    "test": "npm run test:unit && npm run test:e2e"
+    "test": "npm run test:unit && npm run test:e2e",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -64,9 +69,11 @@
   "devDependencies": {
     "@babel/core": "^7.26.9",
     "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.28.5",
     "@playwright/test": "^1.50.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@types/node": "^22.13.5",
     "babel-jest": "^29.7.0",
     "eslint": "^9.36.0",
@@ -80,6 +87,8 @@
     "rollup": "^4.12.1",
     "rollup-plugin-license": "^3.3.1",
     "rollup-plugin-postcss": "^4.0.2",
-    "sass": "^1.93.2"
+    "sass": "^1.93.2",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3"
   }
 }

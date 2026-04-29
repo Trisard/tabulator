@@ -1,0 +1,42 @@
+import Module from '../../core/Module.js';
+import { TabulatorType } from '../../core/types.js';
+export default class DataTree extends Module {
+    static moduleName: string;
+    indent: number;
+    field: string;
+    collapseEl: any;
+    expandEl: any;
+    branchEl: any;
+    elementField: any;
+    startOpen: any;
+    constructor(table: TabulatorType);
+    initialize(): void;
+    tableRedrawing(force: boolean): void;
+    initializeElementField(): void;
+    getRowChildren(row: any): any[];
+    columnMoving(): any[];
+    rowDataChanged(row: any, visible: boolean, updatedData: any): void;
+    cellValueChanged(cell: any): void;
+    initializeRow(row: any): void;
+    reinitializeRowChildren(row: any): void;
+    layoutRow(row: any): void;
+    generateControlElement(row: any, el: HTMLElement): void;
+    getRows(rows: any[]): any[];
+    getChildren(row: any, allChildren: boolean, sortOnly: boolean): any[];
+    generateChildren(row: any): any[];
+    expandRow(row: any, silent?: boolean): void;
+    collapseRow(row: any): void;
+    toggleRow(row: any): void;
+    isRowExpanded(row: any): boolean;
+    getTreeParent(row: any): any;
+    getTreeParentRoot(row: any): any;
+    getFilteredTreeChildren(row: any): any[];
+    rowDeleting(row: any): void;
+    rowDelete(row: any): void;
+    addTreeChildRow(row: any, data: any, top: boolean, index: any): void;
+    findChildIndex(subject: any, parent: any): any;
+    getTreeChildren(row: any, component?: boolean, recurse?: boolean): any[];
+    getChildField(): string;
+    redrawNeeded(data: any): boolean;
+}
+//# sourceMappingURL=DataTree.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"BasicHorizontal.d.ts","sourceRoot":"","sources":["../../../../../../src/js/core/rendering/renderers/BasicHorizontal.ts"],"names":[],"mappings":"AAAA,OAAO,QAAQ,MAAM,gBAAgB,CAAC;AAEtC,MAAM,CAAC,OAAO,OAAO,eAAgB,SAAQ,QAAQ;gBACxC,KAAK,EAAE,GAAG;IAItB,cAAc,CAAC,GAAG,EAAE,GAAG,EAAE,UAAU,CAAC,EAAE,OAAO,GAAG,IAAI;IAcpD,wBAAwB,CAAC,OAAO,EAAE,GAAG,EAAE,GAAG,IAAI;CAK9C"}
